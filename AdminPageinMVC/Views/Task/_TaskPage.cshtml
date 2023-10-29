@@ -1,0 +1,39 @@
+﻿@using NonFactors.Mvc.Grid;
+@model System.Collections.Generic.List<AdminPageinMVC.Dto.TaskDTO>
+
+@{
+    Layout = "~/Views/Shared/_Task.cshtml";
+}
+
+
+
+<div class="user-table">
+    @(Html
+        .Grid(Model)
+        .Build(columns =>
+        {
+            columns.Add(model => model.Id).Titled("Id").Filterable(true).Sortable(true);
+            columns.Add(model => model.Title).Titled("Title").Filterable(true).Sortable(true);
+            columns.Add(model => model.Description).Titled("Description").Filterable(true).Sortable(true);
+            columns.Add(model => model.Lesson.Id).Titled("Lesson Id").Filterable(true).Sortable(true);
+            columns.Add(model => model.DateTime).Titled("DateTime").Filterable(true).Sortable(true);
+            columns.Add(model => model.Process).Titled("Process").Filterable(true).Sortable(true);
+            columns.Add()
+                .Encoded(false)
+                .RenderedAs(model =>
+                {
+                    return $@"
+                        <a class=""btn-update"">Update</a>
+                        <button class=""btn-confirm hide"" asp-controller=""Task"" asp-action=""UpdateTask"" type=""submit"">Confirm</button>
+                        <button class=""btn-delete"" asp-controller=""Task"" asp-action=""DeleteTask"" type=""submit"">Delete</button>
+                        <a class=""btn-cancel hide"">Cancel</a>
+                    ";
+                })
+                .Titled("Actions");
+        })
+)
+</div>
+
+<div class="center-align">
+    <a class="waves-effect waves-light btn" href="@Url.Action("AddTask", "Task")">Create New Education</a>
+</div>

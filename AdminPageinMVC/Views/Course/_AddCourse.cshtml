@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "~/Views/Shared/_Course.cshtml";
+}
+
+<form class="update-form" method="post" action="@Url.Action("AddCourse", "Course")">
+    <input type="text" name="price" class="input" placeholder="Price" required />
+    <input type="text" name="description" class="input" placeholder="Description" required />
+    <input type="text" name="imageUrl" class="input" placeholder="ImageUrl" required />
+    <div class="btns">
+        <button class="confirm" type="submit">Confirm</button>
+        <button method="get" asp-controller="Course" asp-action="GetCourseList" class="cancel">Cancel</button>
+    </div>
+</form>
+

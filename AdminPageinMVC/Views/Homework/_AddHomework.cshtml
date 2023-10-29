@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "~/Views/Shared/_Homework.cshtml";
+}
+<form class="update-form" method="post" action="@Url.Action("AddHomework", "Homework")">
+    <input type="text" name="imageUrl" class="input" placeholder="ImageUrl" required />
+    <input type="text" name="description" class="input" placeholder="Description" required />
+    <input type="text" name="taskId" class="input" placeholder="Task Id" required />
+    <div class="btns">
+        <button class="confirm" type="submit">Confirm</button>
+        <button method="get" asp-controller="Homework" asp-action="GetAllHomework" class="cancel">Cancel</button>
+    </div>
+</form>
